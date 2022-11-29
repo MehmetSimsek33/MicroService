@@ -1,0 +1,12 @@
+1669717983953	Rename package 'com.kodlamaio.inventorySerivece.dataAcess'
+1669718599191	Rename package 'com.kodlamaio.inventorySerivece.business.requests.models.CreateModelRequest'
+1669718981426	Delete element
+1669719005432	Rename package 'com.kodlamaio.inventorySerivece.business.requests.Create'
+1669721137967	Move compilation unit
+1669721141808	Move compilation unit
+1669721145673	Move compilation unit
+1669721149155	Delete element
+1669721151015	Delete element
+1669721152480	Delete element
+1669721197817	Delete element
+1669725374543	Rename type 'UpdateCreateRequest'

@@ -1,0 +1,13 @@
+package com.kodlamaio.inventorySerivece.business.responses.update;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class UpdateBrandResponse {
+	private String id;
+	private String name;
+}

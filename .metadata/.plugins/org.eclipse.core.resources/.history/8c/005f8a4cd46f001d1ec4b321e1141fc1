@@ -1,0 +1,12 @@
+package com.kodlamaio.inventorySerivece.business.responses.create;
+
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateModelResponse {
+	private String id;
+	private String name;
+
+}

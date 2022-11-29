@@ -1,0 +1,11 @@
+spring.application.name=inventory-service
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:postgresql://localhost:5432/rentacarinventorydb
+spring.datasource.username=postgres
+spring.datasource.password=6352
+spring.jpa.properties.javax.persistence.validation.mode = none
+
+server.port = 0

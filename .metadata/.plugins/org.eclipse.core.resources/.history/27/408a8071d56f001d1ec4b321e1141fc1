@@ -1,0 +1,15 @@
+package com.kodlamaio.inventorySerivece.business.abstracts;
+
+import java.util.List;
+
+import com.kodlamaio.inventorySerivece.business.requests.brands.CreateBrandRequest;
+import com.kodlamaio.inventorySerivece.business.requests.models.CreateModelRequest;
+import com.kodlamaio.inventorySerivece.business.responses.create.CreateBrandResponse;
+import com.kodlamaio.inventorySerivece.business.responses.create.CreateModelResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllBrandsResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllModelResponse;
+
+public interface ModelService {
+	  List<GetAllModelResponse> getAll();
+	  CreateModelResponseO add(CreateModelRequest createModelRequest);
+}

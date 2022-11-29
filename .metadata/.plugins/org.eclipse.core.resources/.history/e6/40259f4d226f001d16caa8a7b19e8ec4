@@ -1,0 +1,20 @@
+package com.kodlamaio.inventorySerivece.entities;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+public class Model {
+	
+	private String id;
+	
+	private String name;
+	@ManyToOne
+	@JoinColumn(name="brand_id")
+	private Brand brand
+	
+	@OneToMany(mappedBy = "model")
+	private List<Car> cars;
+	
+
+}

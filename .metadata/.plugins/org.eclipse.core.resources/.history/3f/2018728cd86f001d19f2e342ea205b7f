@@ -1,0 +1,24 @@
+package com.kodlamaio.inventorySerivece.business.concrete;
+
+import java.util.List;
+
+import com.kodlamaio.inventorySerivece.business.abstracts.ModelService;
+import com.kodlamaio.inventorySerivece.business.requests.models.CreateModelRequest;
+import com.kodlamaio.inventorySerivece.business.responses.create.CreateModelResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllModelResponse;
+
+public class ModelManager implements ModelService {
+
+	@Override
+	public List<GetAllModelResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CreateModelResponse add(CreateModelRequest createModelRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

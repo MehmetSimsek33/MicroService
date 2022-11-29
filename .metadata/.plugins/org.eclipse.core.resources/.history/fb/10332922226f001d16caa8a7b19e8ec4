@@ -1,0 +1,5 @@
+package com.kodlamaio.inventorySerivece.entities;
+
+public class Brand {
+
+}

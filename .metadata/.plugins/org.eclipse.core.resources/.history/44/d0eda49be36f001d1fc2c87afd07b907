@@ -1,0 +1,50 @@
+package com.kodlamaio.inventorySerivece.business.concrete;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.kodlamaio.commen.utilities.mapping.ModelMapperService;
+import com.kodlamaio.inventorySerivece.business.abstracts.CarService;
+import com.kodlamaio.inventorySerivece.business.requests.create.CreateCarRequest;
+import com.kodlamaio.inventorySerivece.business.requests.update.UpdateCarRequest;
+import com.kodlamaio.inventorySerivece.business.responses.create.CreateCarResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllCarResponse;
+import com.kodlamaio.inventorySerivece.business.responses.update.UpdateCarResponse;
+import com.kodlamaio.inventorySerivece.dataAccess.CarRepository;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Service
+public class CarManager implements CarService {
+
+	private ModelMapperService modelMapperService;
+	private CarRepository carRepository;
+	@Override
+	public List<GetAllCarResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public CreateCarResponse add(CreateCarRequest createCarRequest) {
+	
+		Car car=this.modelMapperService.forRequest().map(createCarRequest,Car.class);
+		carRepository.save(car);
+		CreateCarResponse carResponse=
+				this.modelMapperService.forResponse().map(car, CreateCarResponse.class);
+		return carResponse;
+	}
+	@Override
+	public UpdateCarResponse update(UpdateCarRequest updateCarRequest) {
+		Car car=this.modelMapperService.forRequest().map(updateCarRequest,Car.class);
+		carRepository.save(car);
+		UpdateCarResponse carResponse=this.modelMapperService.forResponse().map(car, UpdateCarResponse.class);
+		return carResponse;
+	}
+	
+
+}

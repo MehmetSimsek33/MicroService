@@ -1,0 +1,10 @@
+package com.kodlamaio.inventorySerivece.business.responses.create;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+public class CreateModelResponse {
+	private String id;
+	private String name;
+
+}

@@ -1,0 +1,22 @@
+package com.kodlamaio.inventorySerivece.business.requests.cars;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.kodlamaio.inventorySerivece.entities.Model;
+
+public class CreateCarRequest {
+
+	private double dailyPrice;
+	
+	private int modelYear;
+	
+	private String plate;
+	
+	private int state;
+	
+	private int modelId;
+	
+}

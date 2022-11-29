@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="CommitDialog.authorValues">
+		<item value="Mehme &lt;Mehme@host.docker.internal&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Mehme &lt;Mehme@host.docker.internal&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\Mehme\git\repository\.git">
+			<item value="false"/>
+			<item value="Mehme &lt;Mehme@host.docker.internal&gt;"/>
+			<item value="first"/>
+			<item value="Mehme &lt;Mehme@host.docker.internal&gt;"/>
+			<item value="6cc8a187d7382faf3e435870b9d4cc70f765e794"/>
+			<item value="0"/>
+			<item value="false"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>

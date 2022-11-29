@@ -1,0 +1,12 @@
+package com.kodlamaio.inventorySerivece;
+
+
+@SpringBootApplication
+public class InventorySeriveceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(InventorySeriveceApplication.class, args);
+	}
+
+}
+ 

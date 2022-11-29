@@ -1,0 +1,5 @@
+package com.kodlamaio.inventorySerivece.controllers;
+
+public class BrandController {
+
+}

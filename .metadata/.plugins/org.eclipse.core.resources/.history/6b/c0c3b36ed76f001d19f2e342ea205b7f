@@ -1,0 +1,5 @@
+package com.kodlamaio.commen.utilities.mapping;
+
+public class ModelMapperService {
+
+}

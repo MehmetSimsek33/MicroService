@@ -1,0 +1,38 @@
+package com.kodlamaio.inventorySerivece.business.concrete;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.kodlamaio.commen.utilities.mapping.ModelMapperService;
+import com.kodlamaio.inventorySerivece.business.abstracts.ModelService;
+import com.kodlamaio.inventorySerivece.business.requests.create.CreateModelRequest;
+import com.kodlamaio.inventorySerivece.business.responses.create.CreateModelResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllBrandsResponse;
+import com.kodlamaio.inventorySerivece.business.responses.get.GetAllModelResponse;
+import com.kodlamaio.inventorySerivece.dataAccess.ModelRepository;
+import com.kodlamaio.inventorySerivece.entities.Brand;
+import com.kodlamaio.inventorySerivece.entities.Model;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+@Service
+public class ModelManager implements ModelService {
+
+	private ModelMapperService modelMapperService;
+	private ModelRepository modelRepository;
+	private 
+	@Override
+	public List<GetAllModelResponse> getAll() {
+
+	}
+
+	@Override
+	public CreateModelResponse add(CreateModelRequest createModelRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
