@@ -1,6 +1,7 @@
 package com.kodlamaio.inventorySerivece.business.concrete;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -45,6 +46,7 @@ public class CarManager implements CarService {
 	
 		checkICarExistsModel(createCarRequest.getModelId());
 		Car car=this.modelMapperService.forRequest().map(createCarRequest,Car.class);
+		car.setId(UUID.randomUUID().toString());
 		carRepository.save(car);
 		CreateCarResponse carResponse=
 				this.modelMapperService.forResponse().map(car, CreateCarResponse.class);
@@ -89,6 +91,15 @@ public class CarManager implements CarService {
 				if (currentModel == null) { 
 			throw new BusinessException("Model not.EXISTS");
 		}
+	}
+
+
+	@Override
+	public void updateCarState(String carId, int state) {
+		Car car = carRepository.findById(carId).get();
+		System.out.println(car.getDailyPrice());
+		car.setState(state);
+		carRepository.save(car);
 	}
 
 	

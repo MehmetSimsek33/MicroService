@@ -20,5 +20,7 @@ public interface CarService {
 	List<GetAllCarResponse> getAll();
 
 	GetCarResponse getById(String id);
+	
+	void updateCarState(String carId, int state);
 
 }

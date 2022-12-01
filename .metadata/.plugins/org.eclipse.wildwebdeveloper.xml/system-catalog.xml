@@ -229,4 +229,5 @@
 <uri name="http://www.w3.org/2001/XMLSchema" uri="file:///C:/Users/Mehme/eclipse/jee-2022-09/eclipse/configuration/org.eclipse.osgi/871/0/.cp/cache/www.w3.org/2001/XMLSchema.xsd"/>
 <system systemId="http://www.w3.org/2001/xml.xsd" uri="file:///C:/Users/Mehme/eclipse/jee-2022-09/eclipse/configuration/org.eclipse.osgi/871/0/.cp/cache/www.w3.org/2001/xml.xsd"/>
 <uri name="http://www.w3.org/2001/XInclude" uri="file:///C:/Users/Mehme/eclipse/jee-2022-09/eclipse/configuration/org.eclipse.osgi/853/0/.cp/xslt-schemas/xinclude.xsd"/>
+<public publicId="-//LOG4J//DTD LOG4J//EN" uri="file:///C:/Users/Mehme/eclipse/jee-2022-09/eclipse/configuration/org.eclipse.osgi/971/0/.cp/dtd/log4j-1.2.dtd"/>
 </catalog>

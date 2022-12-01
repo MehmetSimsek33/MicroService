@@ -2,18 +2,13 @@
 <syncparticipants>
 <participant displayName="Git (commen, disco...entorySerivece)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1669747621499">
 <data forceFetch="false" root="false">
-<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="commen, disco...entorySerivece" startupAction="none">
-<org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
-<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">
-<mappings>
-<resources resourcePath="/inventorySerivece" resourceType="4"/>
+<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="commen, disco...entorySerivece" startupAction="none">&#x0A;<org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
+<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">&#x0A;<mappings>&#x0A;<resources resourcePath="/inventorySerivece" resourceType="4"/>
 <resources resourcePath="/commen" resourceType="4"/>
 <resources resourcePath="/discovery-server" resourceType="4"/>
 </mappings>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS>
-<gitSynchronizeData container="C:/Users/Mehme/git/repository/commen" dstRev="HEAD" inludeLocal="true" srcRev="HEAD"/>
-<gitSynchronizeData container="C:/Users/Mehme/Desktop/casgem/microservices/inventorySerivece" dstRev="HEAD" inludeLocal="true" srcRev="HEAD"/>
 </data>
 </participant>
 </syncparticipants>
