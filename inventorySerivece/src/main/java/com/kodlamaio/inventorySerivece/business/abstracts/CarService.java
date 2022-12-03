@@ -22,5 +22,7 @@ public interface CarService {
 	GetCarResponse getById(String id);
 	
 	void updateCarState(String carId, int state);
+	
+	void checkIfState(String id);
 
 }

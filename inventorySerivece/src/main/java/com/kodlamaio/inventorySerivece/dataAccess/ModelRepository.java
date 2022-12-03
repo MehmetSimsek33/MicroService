@@ -6,4 +6,5 @@ import com.kodlamaio.inventorySerivece.entities.Model;
 
 public interface ModelRepository  extends JpaRepository<Model, String> {
 
+	Model findByName(String name);
 }

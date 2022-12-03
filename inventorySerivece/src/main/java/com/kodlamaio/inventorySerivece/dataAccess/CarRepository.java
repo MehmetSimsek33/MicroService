@@ -6,5 +6,5 @@ import com.kodlamaio.inventorySerivece.entities.Car;
 
 public interface CarRepository  extends JpaRepository<Car, String> {
 	
-
+	Car findByPlate(String id);
 }

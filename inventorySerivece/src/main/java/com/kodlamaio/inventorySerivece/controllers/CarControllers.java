@@ -44,4 +44,8 @@ public class CarControllers {
 	public List<GetAllCarResponse> getAll() {
 		return this.carService.getAll();
 	}
+	@GetMapping("{id}")
+	public void checkIfState(@PathVariable(name="id") String id) {
+		 this.carService.checkIfState(id);
+	}
 }
