@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.kodlamaio.common.event.RentalCreateInvoice;
 import com.kodlamaio.common.event.RentalCreatedEvent;
 import com.kodlamaio.common.event.RentalPaymentCreatedEvent;
 import com.kodlamaio.common.event.RentalUpdatedEvent;
@@ -58,12 +59,17 @@ public class RentalManager implements RentalService {
 //		rentalCreatedEvent.setMessage("Rental Created");
 //		
 //		this.rentalProducer.sendMessage(rentalCreatedEvent);
-
+		
+		RentalCreateInvoice rentalCreateInvoice=new RentalCreateInvoice();
+		rentalCreateInvoice.setRentalId(rentalCreated.getId());
+		rentalCreateInvoice.setTotalPrice(totalPrice);
+		
+		this.rentalProducer.sendMessage(rentalCreateInvoice);
 		CreateRentalResponse createRentalResponse = this.modelMapperService.forResponse().map(rentalCreated,
 				CreateRentalResponse.class);
 		return createRentalResponse;
 	}
-
+ 
 	@Override
 	public UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest) {
 		Rental rental = this.rentalRepository.findByCarId(updateRentalRequest.getOldCarId());

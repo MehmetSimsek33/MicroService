@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 public class RentalConsumer {
 
 	private PaymentService paymentService;
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(RentalConsumer.class);
 
 	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "paymentCreate")
