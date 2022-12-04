@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Mehme\Desktop\casgem\microservices\invoiceService"/>
 			<item value="C:\Users\Mehme\Desktop\casgem\microservices\apigateway"/>
 			<item value="C:\Users\Mehme\Desktop\casgem\backend\bootCampProject"/>
 			<item value="C:\Users\Mehme\Desktop\casgem\rentACar"/>

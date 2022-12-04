@@ -39,8 +39,8 @@ public class RentalManager implements RentalService {
 		
 		double totalPrice = createRentalRequest.getDailyPrice() * createRentalRequest.getRentedForDays();
 		rental.setTotalPrice(totalPrice);
-	//	this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
-//		checkIfState(createRentalRequest.getCarId());
+		this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
+		checkIfState(createRentalRequest.getCarId());
 		RentalPaymentCreatedEvent paymentCreatedEvent=new RentalPaymentCreatedEvent();
 		paymentCreatedEvent.setBalance(createRentalRequest.getBalance());
 		paymentCreatedEvent.setCardHolder(createRentalRequest.getCardHolder());
@@ -53,12 +53,12 @@ public class RentalManager implements RentalService {
 	
 		Rental rentalCreated = this.rentalRepository.save(rental);
 		
-//	
-//		RentalCreatedEvent rentalCreatedEvent = new RentalCreatedEvent();
-//		rentalCreatedEvent.setCarId(rentalCreated.getCarId());
-//		rentalCreatedEvent.setMessage("Rental Created");
-//		
-//		this.rentalProducer.sendMessage(rentalCreatedEvent);
+	
+		RentalCreatedEvent rentalCreatedEvent = new RentalCreatedEvent();
+		rentalCreatedEvent.setCarId(rentalCreated.getCarId());
+		rentalCreatedEvent.setMessage("Rental Created");
+		
+		this.rentalProducer.sendMessage(rentalCreatedEvent);
 		
 		RentalCreateInvoice rentalCreateInvoice=new RentalCreateInvoice();
 		rentalCreateInvoice.setRentalId(rentalCreated.getId());

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="model"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="model"/>
+			<item value="depe"/>
+			<item value="rental_topics3"/>
+			<item value="spring.kafka.topic.name"/>
 			<item value="toruk"/>
 			<item value="toru"/>
 			<item value="spring.application.name=stock"/>
@@ -17,7 +21,6 @@
 			<item value="org.springframework.cloud"/>
 			<item value="port"/>
 			<item value="por"/>
-			<item value="model"/>
 		</list>
 		<list key="replacehistory">
 		</list>
