@@ -11487,3 +11487,4 @@ Caused by: java.lang.Exception: Resource '/inventorySerivece/pom.xml' does not e
 2022-12-05 00:26:53,037 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2022-12-05 00:26:53,048 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-12-05 00:26:53,048 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-12-05 00:26:53,049 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Mehme\Desktop\casgem\microservices\rentalService\src\test\resources
