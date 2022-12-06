@@ -14,15 +14,15 @@ import lombok.AllArgsConstructor;
 @Service
 public class RentalConsumer {
 
-	private PaymentService paymentService;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(RentalConsumer.class);
-
-	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "paymentCreate")
-	public void consume(RentalPaymentCreatedEvent event) {
-		LOGGER.info(String.format("Order event received in stock service => %s", event.toString()));
-		paymentService.add(event);
-		// save the order event into the database
-	}
+//	private PaymentService paymentService;
+//	
+//	private static final Logger LOGGER = LoggerFactory.getLogger(RentalConsumer.class);
+//
+//	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "paymentCreate")
+//	public void consume(RentalPaymentCreatedEvent event) {
+//		LOGGER.info(String.format("Order event received in stock service => %s", event.toString()));
+//		paymentService.add(event);
+//		// save the order event into the database
+//	}
 
 }

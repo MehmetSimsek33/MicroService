@@ -1,8 +1,10 @@
 package com.kodlamaio.invoiceService.business.concretes;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
-import com.kodlamaio.common.event.RentalCreateInvoice;
+import com.kodlamaio.common.event.PaymentCreatedEvent;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
 import com.kodlamaio.invoiceService.business.abstracts.InvoiceService;
 import com.kodlamaio.invoiceService.business.responses.create.CreateInvoiceResponses;
@@ -19,12 +21,15 @@ public class InvoiceManager implements InvoiceService {
 	private ModelMapperService modelMapperService;
 
 	@Override
-	public CreateInvoiceResponses add(RentalCreateInvoice createInvoiceRequest) {
-		Invoice invoice = this.modelMapperService.forRequest().map(createInvoiceRequest, Invoice.class);
+	public Invoice add(PaymentCreatedEvent createInvoiceRequest) {
+	//	Invoice invoice = this.modelMapperService.forRequest().map(createInvoiceRequest, Invoice.class);
+		Invoice invoice =new Invoice();
+		invoice.setId(UUID.randomUUID().toString());
+		invoice.setRentalId(createInvoiceRequest.getRentalId());
 		this.invoiceRepository.save(invoice);
-		CreateInvoiceResponses invoiceResponses = this.modelMapperService.forRequest().map(invoice,
+	CreateInvoiceResponses invoiceResponses = this.modelMapperService.forResponse().map(invoice,
 				CreateInvoiceResponses.class);
-		return invoiceResponses;
+		return invoice;
 	}
 
 }

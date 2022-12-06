@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import feign.Headers;
 @FeignClient(value="client", url = "http://localhost:9010/")
-public interface FeignClientUtill {	
-
+public interface CarClient {	
 	@RequestMapping(method =RequestMethod.GET,value ="stock/api/cars/{id}")
 	@Headers(value = "Content-Type: application/json")
 	void checkIfState(@PathVariable(name="id") String id);

@@ -5,12 +5,12 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.kodlamaio.common.event.RentalCreateInvoice;
 import com.kodlamaio.common.event.RentalCreatedEvent;
-import com.kodlamaio.common.event.RentalPaymentCreatedEvent;
 import com.kodlamaio.common.event.RentalUpdatedEvent;
+import com.kodlamaio.common.rentalPayment.PayMoneyRequest;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
-import com.kodlamaio.rentalService.api.FeignClientUtill;
+import com.kodlamaio.rentalService.api.CarClient;
+import com.kodlamaio.rentalService.api.PaymentClient;
 import com.kodlamaio.rentalService.business.abstracts.RentalService;
 import com.kodlamaio.rentalService.business.requests.create.CreateRentalRequest;
 import com.kodlamaio.rentalService.business.requests.update.UpdateRentalRequest;
@@ -28,7 +28,9 @@ public class RentalManager implements RentalService {
 	private RentalRepository rentalRepository;
 	private ModelMapperService modelMapperService;
 	private RentalProducer rentalProducer;
-	private  FeignClientUtill feignClientUtill;
+	//private  CarClient feignClientUtill;
+	private PaymentClient paymentClient;
+
 
 	@Override
 	public CreateRentalResponse add(CreateRentalRequest createRentalRequest) {
@@ -39,16 +41,17 @@ public class RentalManager implements RentalService {
 		
 		double totalPrice = createRentalRequest.getDailyPrice() * createRentalRequest.getRentedForDays();
 		rental.setTotalPrice(totalPrice);
-		this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
-		checkIfState(createRentalRequest.getCarId());
-		RentalPaymentCreatedEvent paymentCreatedEvent=new RentalPaymentCreatedEvent();
-		paymentCreatedEvent.setBalance(createRentalRequest.getBalance());
-		paymentCreatedEvent.setCardHolder(createRentalRequest.getCardHolder());
-		paymentCreatedEvent.setCardNo(createRentalRequest.getCardNo());
-		paymentCreatedEvent.setTotalPrice(totalPrice);
-		paymentCreatedEvent.setMessage(null);
-		paymentCreatedEvent.setRentalId(rental.getId());
-		this.rentalProducer.sendMessage(paymentCreatedEvent);
+		//this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
+		//checkIfState(createRentalRequest.getCarId());
+		PayMoneyRequest payMoneyRequest = new PayMoneyRequest();
+		payMoneyRequest.setBalance(createRentalRequest.getBalance());
+		payMoneyRequest.setTotalPrice(rental.getTotalPrice());
+		payMoneyRequest.setCardHolder(createRentalRequest.getCardHolder());
+		payMoneyRequest.setCardNo(createRentalRequest.getCardNo());
+		payMoneyRequest.setRentalId(rental.getId());
+		
+		paymentClient.add(payMoneyRequest);
+
 		
 	
 		Rental rentalCreated = this.rentalRepository.save(rental);
@@ -60,11 +63,7 @@ public class RentalManager implements RentalService {
 		
 		this.rentalProducer.sendMessage(rentalCreatedEvent);
 		
-		RentalCreateInvoice rentalCreateInvoice=new RentalCreateInvoice();
-		rentalCreateInvoice.setRentalId(rentalCreated.getId());
-		rentalCreateInvoice.setTotalPrice(totalPrice);
-		
-		this.rentalProducer.sendMessage(rentalCreateInvoice);
+
 		CreateRentalResponse createRentalResponse = this.modelMapperService.forResponse().map(rentalCreated,
 				CreateRentalResponse.class);
 		return createRentalResponse;

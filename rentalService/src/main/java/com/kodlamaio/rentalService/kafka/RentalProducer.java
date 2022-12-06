@@ -28,9 +28,9 @@ public class RentalProducer {
 
 	private KafkaTemplate<String, RentalUpdatedEvent> kafkaTemplateUpdated;
 
-	private KafkaTemplate<String, RentalPaymentCreatedEvent> kafkaTemplatePaymentCreated;
-
-	private KafkaTemplate<String, RentalCreateInvoice> kafkaTemplateInvoice;
+//	private KafkaTemplate<String, RentalPaymentCreatedEvent> kafkaTemplatePaymentCreated;
+//
+//	private KafkaTemplate<String, RentalCreateInvoice> kafkaTemplateInvoice;
 
 	public void sendMessage(RentalCreatedEvent rentalCreatedEvent) {
 		LOGGER.info(String.format("Rental created event => %s", rentalCreatedEvent.toString()));
@@ -50,22 +50,22 @@ public class RentalProducer {
 		kafkaTemplateUpdated.send(message);
 	}
 
-	public void sendMessage(RentalPaymentCreatedEvent rentalPaymentCreatedEvent) {
-		LOGGER.info(String.format("Kafka updated event => %s", rentalPaymentCreatedEvent.toString()));
+//	public void sendMessage(RentalPaymentCreatedEvent rentalPaymentCreatedEvent) {
+//		LOGGER.info(String.format("Kafka updated event => %s", rentalPaymentCreatedEvent.toString()));
+//
+//		Message<RentalPaymentCreatedEvent> message = MessageBuilder.withPayload(rentalPaymentCreatedEvent)
+//				.setHeader(KafkaHeaders.TOPIC, topic.name()).build();
+//
+//		kafkaTemplatePaymentCreated.send(message);
+//	}
 
-		Message<RentalPaymentCreatedEvent> message = MessageBuilder.withPayload(rentalPaymentCreatedEvent)
-				.setHeader(KafkaHeaders.TOPIC, topic.name()).build();
-
-		kafkaTemplatePaymentCreated.send(message);
-	}
-
-	public void sendMessage(RentalCreateInvoice rentalCreateInvoice) {
-		LOGGER.info(String.format("Kafka invoice event => %s", rentalCreateInvoice.toString()));
-
-		Message<RentalCreateInvoice> message = MessageBuilder.withPayload(rentalCreateInvoice)
-				.setHeader(KafkaHeaders.TOPIC, topic.name()).build();
-
-		kafkaTemplateInvoice.send(message);
-	}
+//	public void sendMessage(RentalCreateInvoice rentalCreateInvoice) {
+//		LOGGER.info(String.format("Kafka invoice event => %s", rentalCreateInvoice.toString()));
+//
+//		Message<RentalCreateInvoice> message = MessageBuilder.withPayload(rentalCreateInvoice)
+//				.setHeader(KafkaHeaders.TOPIC, topic.name()).build();
+//
+//		kafkaTemplateInvoice.send(message);
+//	}
 
 }
