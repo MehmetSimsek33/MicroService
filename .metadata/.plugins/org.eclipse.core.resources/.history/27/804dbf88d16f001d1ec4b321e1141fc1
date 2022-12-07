@@ -1,5 +1,0 @@
-package com.kodlamaio.inventorySerivece.dataAccess;
-
-public class CarRepository {
-
-}

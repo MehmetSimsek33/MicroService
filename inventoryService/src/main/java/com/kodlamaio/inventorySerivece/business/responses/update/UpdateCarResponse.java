@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class UpdateCarResponse {
 	private String id;
-	private String name;
 	private double dailyPrice;
 	private int modelYear;
 	private String brandName;

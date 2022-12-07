@@ -28,7 +28,7 @@ public class RentalManager implements RentalService {
 	private RentalRepository rentalRepository;
 	private ModelMapperService modelMapperService;
 	private RentalProducer rentalProducer;
-	//private  CarClient feignClientUtill;
+	private  CarClient feignClientUtill;
 	private PaymentClient paymentClient;
 
 
@@ -41,8 +41,8 @@ public class RentalManager implements RentalService {
 		
 		double totalPrice = createRentalRequest.getDailyPrice() * createRentalRequest.getRentedForDays();
 		rental.setTotalPrice(totalPrice);
-		//this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
-		//checkIfState(createRentalRequest.getCarId());
+		this.feignClientUtill.checkIfState(createRentalRequest.getCarId());
+	//	checkIfState(createRentalRequest.getCarId());
 		PayMoneyRequest payMoneyRequest = new PayMoneyRequest();
 		payMoneyRequest.setBalance(createRentalRequest.getBalance());
 		payMoneyRequest.setTotalPrice(rental.getTotalPrice());

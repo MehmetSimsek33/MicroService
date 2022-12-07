@@ -74,13 +74,6 @@ public class BrandManager implements BrandService {
 
 	}
 
-	private void checkIfBrandExistsByName(String name) {
-		Brand currentBrand = this.brandRepository.findByName(name);
-		if (currentBrand != null) {
-			throw new BusinessException("BRAND.EXISTS");
-		}
-	}
-
 	@Override
 	public void delete(String id) {
 		checkIfBrandExistsById(id);
@@ -92,6 +85,13 @@ public class BrandManager implements BrandService {
 		Brand currentBrand = this.brandRepository.findById(id).orElse(null);
 		if (currentBrand == null) {
 			throw new BusinessException("Brand not.EXISTS");
+		}
+	}
+
+	private void checkIfBrandExistsByName(String name) {
+		Brand currentBrand = this.brandRepository.findByName(name);
+		if (currentBrand != null) {
+			throw new BusinessException("BRAND.EXISTS");
 		}
 	}
 

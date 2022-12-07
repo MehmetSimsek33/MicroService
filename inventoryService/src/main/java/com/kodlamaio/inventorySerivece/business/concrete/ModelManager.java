@@ -1,6 +1,7 @@
 package com.kodlamaio.inventorySerivece.business.concrete;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -44,6 +45,7 @@ public class ModelManager implements ModelService {
 		checkIfModelExistsBrand(createModelRequest.getBrandId());
 		checkIfModelExistsByName(createModelRequest.getName());
 		Model model = this.modelMapperService.forRequest().map(createModelRequest, Model.class);
+		model.setId(UUID.randomUUID().toString());
 		modelRepository.save(model);
 		CreateModelResponse modelResponse = this.modelMapperService.forResponse().map(model, CreateModelResponse.class);
 		return modelResponse;

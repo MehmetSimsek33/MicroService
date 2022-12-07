@@ -17,9 +17,6 @@ public class UpdateCarRequest {
 	@NotNull
 	@Min(0)
 	private String id;
-	@NotBlank
-	@Size(min = 1, max = 22)
-	private String name;
 	@NotNull
 	@Min(1)
 	private double dailyPrice;

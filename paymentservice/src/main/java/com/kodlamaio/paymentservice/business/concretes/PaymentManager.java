@@ -34,8 +34,6 @@ public class PaymentManager implements PaymentService {
 
 		Payment result = paymentRepository.save(payment);
 
-//		senkron olması gerektiği için
-//		
 		PaymentCreatedEvent paymentCreatedEvent = new PaymentCreatedEvent();
 		paymentCreatedEvent.setRentalId(createPaymentRequest.getRentalId());
 		paymentCreatedEvent.setMessage("Payment carried out");

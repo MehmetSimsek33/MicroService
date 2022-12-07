@@ -1,5 +1,0 @@
-package com.kodlamaio.inventorySerivece.business.requests.models;
-
-public class CreateModelRequest {
-
-}
