@@ -11,6 +11,10 @@ import com.kodlamaio.common.event.filter.car.CarDeletedEvent;
 import com.kodlamaio.common.event.filter.car.CarUpdatedEvent;
 import com.kodlamaio.common.utilities.exceptions.BusinessException;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
+import com.kodlamaio.common.utilities.results.DataResult;
+import com.kodlamaio.common.utilities.results.Result;
+import com.kodlamaio.common.utilities.results.SuccesResult;
+import com.kodlamaio.common.utilities.results.SuccessDataResult;
 import com.kodlamaio.inventorySerivece.business.abstracts.CarService;
 import com.kodlamaio.inventorySerivece.business.abstracts.ModelService;
 import com.kodlamaio.inventorySerivece.business.requests.create.CreateCarRequest;
@@ -20,7 +24,6 @@ import com.kodlamaio.inventorySerivece.business.responses.get.GetAllCarResponse;
 import com.kodlamaio.inventorySerivece.business.responses.get.GetCarResponse;
 import com.kodlamaio.inventorySerivece.business.responses.update.UpdateCarResponse;
 import com.kodlamaio.inventorySerivece.dataAccess.CarRepository;
-import com.kodlamaio.inventorySerivece.dataAccess.mongoDb.CarMongoRepository;
 import com.kodlamaio.inventorySerivece.entities.Car;
 import com.kodlamaio.inventorySerivece.kafka.InventoryProducer;
 
@@ -32,22 +35,21 @@ public class CarManager implements CarService {
 
 	private ModelMapperService modelMapperService;
 	private CarRepository carRepository;
-	private CarMongoRepository mongoRepository;
 	private ModelService modelService;
 	private InventoryProducer inventoryProducer;
 
 	@Override
-	public List<GetAllCarResponse> getAll() {
+	public DataResult<List<GetAllCarResponse>> getAll() {
 		List<Car> cars = this.carRepository.findAll();
 		List<GetAllCarResponse> response = cars.stream()
 				.map(car -> this.modelMapperService.forResponse().map(car, GetAllCarResponse.class))
 				.collect(Collectors.toList());
 
-		return response;
+		return new SuccessDataResult<List<GetAllCarResponse>>(response);
 	}
 
 	@Override
-	public CreateCarResponse add(CreateCarRequest createCarRequest) {
+	public  DataResult<CreateCarResponse> add(CreateCarRequest createCarRequest) {
 
 		checkICarExistsModel(createCarRequest.getModelId());
 		checkIfCarExistsByPlate(createCarRequest.getPlate());
@@ -65,11 +67,11 @@ public class CarManager implements CarService {
 		carCreatedEvent.setBrandName(result.getModel().getBrand().getName());
 		this.inventoryProducer.sendMessage(carCreatedEvent);
 
-		return carResponse;
+		return new SuccessDataResult<CreateCarResponse>(carResponse);
 	}
 
 	@Override
-	public UpdateCarResponse update(UpdateCarRequest updateCarRequest) {
+	public  DataResult<UpdateCarResponse> update(UpdateCarRequest updateCarRequest) {
 		checkIfCarExistsById(updateCarRequest.getId());
 		checkICarExistsModel(updateCarRequest.getModelId());
 		// checkIfCarExistsByPlate(updateCarRequest.getPlate());
@@ -82,24 +84,25 @@ public class CarManager implements CarService {
 		carUpdatedEvent.setBrandName(result.getModel().getBrand().getName());
 		this.inventoryProducer.sendMessage(carUpdatedEvent);
 		UpdateCarResponse carResponse = this.modelMapperService.forResponse().map(result, UpdateCarResponse.class);
-		return carResponse;
+		return new SuccessDataResult<UpdateCarResponse>(carResponse);
 	}
  
 	@Override
-	public void delete(String id) {
+	public Result delete(String id) {
 		checkIfCarExistsById(id);
 		this.carRepository.deleteById(id);
 		CarDeletedEvent carDeletedEvent=new CarDeletedEvent();
 		carDeletedEvent.setCarId(id);		
 		this.inventoryProducer.sendMessage(carDeletedEvent);
+		return new SuccesResult();
 	}
 
 	@Override
-	public GetCarResponse getById(String id) {
+	public DataResult<GetCarResponse> getById(String id) {
 		// checkIfCarExistsById(id);
 		Car car = this.carRepository.findById(id).get();
 		GetCarResponse resCarResponse = this.modelMapperService.forResponse().map(car, GetCarResponse.class);
-		return resCarResponse;
+		return new SuccessDataResult<GetCarResponse>(resCarResponse);
 	}
 
 	@Override
@@ -108,6 +111,7 @@ public class CarManager implements CarService {
 		System.out.println(car.getDailyPrice());
 		car.setState(state);
 		carRepository.save(car);
+		
 	}
 
 	@Override
@@ -116,6 +120,7 @@ public class CarManager implements CarService {
 		if (result.getState() != 1 || result == null) {
 			throw new BusinessException("CAR.NO.AVAILABLE");
 		}
+	
 	}
 
 	private void checkICarExistsModel(String id) {

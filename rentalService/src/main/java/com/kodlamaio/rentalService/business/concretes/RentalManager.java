@@ -9,6 +9,8 @@ import com.kodlamaio.common.event.RentalCreatedEvent;
 import com.kodlamaio.common.event.RentalUpdatedEvent;
 import com.kodlamaio.common.rentalPayment.PayMoneyRequest;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
+import com.kodlamaio.common.utilities.results.DataResult;
+import com.kodlamaio.common.utilities.results.SuccessDataResult;
 import com.kodlamaio.rentalService.api.CarClient;
 import com.kodlamaio.rentalService.api.PaymentClient;
 import com.kodlamaio.rentalService.business.abstracts.RentalService;
@@ -33,7 +35,7 @@ public class RentalManager implements RentalService {
 
 
 	@Override
-	public CreateRentalResponse add(CreateRentalRequest createRentalRequest) {
+	public DataResult<CreateRentalResponse> add(CreateRentalRequest createRentalRequest) {
 		Rental rental = this.modelMapperService.forRequest().map(createRentalRequest, Rental.class);
 		rental.setId(UUID.randomUUID().toString());
 		rental.setDateStarted(LocalDateTime.now());
@@ -66,11 +68,11 @@ public class RentalManager implements RentalService {
 
 		CreateRentalResponse createRentalResponse = this.modelMapperService.forResponse().map(rentalCreated,
 				CreateRentalResponse.class);
-		return createRentalResponse;
+		return new SuccessDataResult<CreateRentalResponse>(createRentalResponse);
 	}
  
 	@Override
-	public UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest) {
+	public  DataResult<UpdateRentalResponse> update(UpdateRentalRequest updateRentalRequest) {
 		Rental rental = this.rentalRepository.findByCarId(updateRentalRequest.getOldCarId());
 		rental.setCarId(updateRentalRequest.getNewCarId());
 		rental.setDailyPrice(updateRentalRequest.getDailyPrice());
@@ -92,7 +94,7 @@ public class RentalManager implements RentalService {
 		UpdateRentalResponse updateRentalResponse = this.modelMapperService.forResponse().map(rentalUpdated, UpdateRentalResponse.class);
 		updateRentalResponse.setCarId(rentalUpdated.getCarId());
 		
-		return updateRentalResponse;
+		return new SuccessDataResult<UpdateRentalResponse>(updateRentalResponse);
 	}
 	
 

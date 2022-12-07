@@ -2,6 +2,8 @@ package com.kodlamaio.inventorySerivece.business.abstracts;
 
 import java.util.List;
 
+import com.kodlamaio.common.utilities.results.DataResult;
+import com.kodlamaio.common.utilities.results.Result;
 import com.kodlamaio.inventorySerivece.business.requests.create.CreateModelRequest;
 import com.kodlamaio.inventorySerivece.business.requests.update.UpdateModelRequest;
 import com.kodlamaio.inventorySerivece.business.responses.create.CreateModelResponse;
@@ -11,13 +13,13 @@ import com.kodlamaio.inventorySerivece.business.responses.update.UpdateModelResp
 
 public interface ModelService {
 
-	CreateModelResponse add(CreateModelRequest createModelRequest);
+	DataResult<CreateModelResponse> add(CreateModelRequest createModelRequest);
 
-	UpdateModelResponse updateModelResponse(UpdateModelRequest updateModelRequest);
+	DataResult<UpdateModelResponse> updateModelResponse(UpdateModelRequest updateModelRequest);
 
-	void delete(String id);
+	Result delete(String id);
 
-	List<GetAllModelResponse> getAll();
+	DataResult<List<GetAllModelResponse>> getAll();
 
-	GetModelResponse getById(String id);
+	DataResult<GetModelResponse> getById(String id);
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kodlamaio.common.utilities.results.DataResult;
 import com.kodlamaio.inventorySerivece.business.abstracts.CarService;
 import com.kodlamaio.inventorySerivece.business.requests.create.CreateCarRequest;
 import com.kodlamaio.inventorySerivece.business.requests.update.UpdateCarRequest;
@@ -27,12 +28,12 @@ public class CarControllers {
 	private CarService carService;
 
 	@PostMapping
-	public CreateCarResponse add(@RequestBody CreateCarRequest createCarRequest) {
+	public DataResult<CreateCarResponse> add(@RequestBody CreateCarRequest createCarRequest) {
 		return this.carService.add(createCarRequest);
 	}
 
 	@PutMapping
-	public UpdateCarResponse update(@RequestBody UpdateCarRequest updateCarRequest) {
+	public DataResult<UpdateCarResponse> update(@RequestBody UpdateCarRequest updateCarRequest) {
 		return this.carService.update(updateCarRequest);
 	}
 	
@@ -41,7 +42,7 @@ public class CarControllers {
 		this.carService.delete(id);
 	}
 	@GetMapping
-	public List<GetAllCarResponse> getAll() {
+	public DataResult<List<GetAllCarResponse>> getAll() {
 		return this.carService.getAll();
 	}
 	@GetMapping("{id}")

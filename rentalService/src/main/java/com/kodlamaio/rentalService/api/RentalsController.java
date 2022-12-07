@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kodlamaio.common.utilities.results.DataResult;
 import com.kodlamaio.rentalService.business.abstracts.RentalService;
 import com.kodlamaio.rentalService.business.requests.create.CreateRentalRequest;
 import com.kodlamaio.rentalService.business.requests.update.UpdateRentalRequest;
@@ -21,12 +22,12 @@ public class RentalsController {
 	private RentalService rentalService;
 
 	@PostMapping
-	public CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest createBrandRequest) {
+	public  DataResult<CreateRentalResponse> add(@Valid @RequestBody CreateRentalRequest createBrandRequest) {
 		return rentalService.add(createBrandRequest);
 	}
 	
 	@PutMapping
-	public UpdateRentalResponse update(@Valid @RequestBody UpdateRentalRequest updateRentalRequest) {
+	public  DataResult<UpdateRentalResponse> update(@Valid @RequestBody UpdateRentalRequest updateRentalRequest) {
 		return rentalService.update(updateRentalRequest);
 	}
 }

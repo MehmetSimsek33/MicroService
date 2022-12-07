@@ -1,12 +1,13 @@
 package com.kodlamaio.rentalService.business.abstracts;
 
+import com.kodlamaio.common.utilities.results.DataResult;
 import com.kodlamaio.rentalService.business.requests.create.CreateRentalRequest;
 import com.kodlamaio.rentalService.business.requests.update.UpdateRentalRequest;
 import com.kodlamaio.rentalService.business.responses.create.CreateRentalResponse;
 import com.kodlamaio.rentalService.business.responses.update.UpdateRentalResponse;
 
 public interface RentalService {
-	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
+	DataResult<CreateRentalResponse> add(CreateRentalRequest createRentalRequest);
 
-	UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest);
+	DataResult<UpdateRentalResponse> update(UpdateRentalRequest updateRentalRequest);
 }

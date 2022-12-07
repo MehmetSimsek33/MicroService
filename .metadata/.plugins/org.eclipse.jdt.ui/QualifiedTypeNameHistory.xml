@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.kodlamaio.inventorySerivece.business.requests.cars.CreateCarRequest"/>
     <fullyQualifiedTypeName name="com.kodlamaio.inventorySerivece.business.responses.get.GetAllModelResponse"/>
     <fullyQualifiedTypeName name="com.kodlamaio.inventorySerivece.business.responses.create.CreateModelResponse"/>
     <fullyQualifiedTypeName name="com.kodlamaio.inventorySerivece.business.requests.models.CreateModelRequest"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.kodlamaio.common.event.filter.car.CarDeletedEvent"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.Payload"/>
     <fullyQualifiedTypeName name="com.kodlamaio.filterService.entities.Filter"/>
+    <fullyQualifiedTypeName name="com.kodlamaio.common.utilities.results.Result"/>
 </qualifiedTypeNameHistroy>

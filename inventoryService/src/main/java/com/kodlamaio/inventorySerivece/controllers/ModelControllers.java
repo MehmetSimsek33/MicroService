@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kodlamaio.common.utilities.results.DataResult;
+import com.kodlamaio.common.utilities.results.Result;
 import com.kodlamaio.inventorySerivece.business.abstracts.ModelService;
 import com.kodlamaio.inventorySerivece.business.requests.create.CreateModelRequest;
 import com.kodlamaio.inventorySerivece.business.requests.update.UpdateModelRequest;
@@ -28,22 +30,22 @@ public class ModelControllers {
 	private ModelService modelService;
 	
 	@PostMapping
-	public CreateModelResponse add(@RequestBody CreateModelRequest createModelRequest) {
+	public DataResult<CreateModelResponse> add(@RequestBody CreateModelRequest createModelRequest) {
 		return this.modelService.add(createModelRequest);
 	}
 	
 	@PutMapping
-	public UpdateModelResponse updateModelResponse(@RequestBody UpdateModelRequest updateModelRequest) {
+	public DataResult<UpdateModelResponse> updateModelResponse(@RequestBody UpdateModelRequest updateModelRequest) {
 		return this.modelService.updateModelResponse(updateModelRequest);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable String id) {
-		this.modelService.delete(id);
+	public Result delete(@PathVariable String id) {
+		return this.modelService.delete(id);
 	}
 	
 	@GetMapping
-	public List<GetAllModelResponse> getAll(){
+	public DataResult<List<GetAllModelResponse>> getAll(){
 		return this.modelService.getAll();
 	}
 }

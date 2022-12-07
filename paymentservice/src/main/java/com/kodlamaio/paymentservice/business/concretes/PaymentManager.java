@@ -8,6 +8,8 @@ import com.kodlamaio.common.event.PaymentCreatedEvent;
 import com.kodlamaio.common.rentalPayment.PayMoneyRequest;
 import com.kodlamaio.common.utilities.exceptions.BusinessException;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
+import com.kodlamaio.common.utilities.results.DataResult;
+import com.kodlamaio.common.utilities.results.SuccessDataResult;
 import com.kodlamaio.paymentservice.business.abstracts.PaymentService;
 import com.kodlamaio.paymentservice.business.responses.create.CreatePaymentResponse;
 import com.kodlamaio.paymentservice.dataAccess.PaymentRepository;
@@ -25,7 +27,7 @@ public class PaymentManager implements PaymentService {
 	private PaymentProducer paymentProducer;
 
 	@Override
-	public CreatePaymentResponse add(PayMoneyRequest createPaymentRequest) {
+	public DataResult<CreatePaymentResponse> add(PayMoneyRequest createPaymentRequest) {
 		checkBalanceEnough(createPaymentRequest.getBalance(), createPaymentRequest.getTotalPrice());
 		Payment payment = this.modelMapperService.forRequest().map(createPaymentRequest, Payment.class);
 		payment.setId(UUID.randomUUID().toString());
@@ -41,7 +43,7 @@ public class PaymentManager implements PaymentService {
 
 		CreatePaymentResponse createPaymentResponse = modelMapperService.forResponse().map(result,
 				CreatePaymentResponse.class);
-		return createPaymentResponse;
+		return new SuccessDataResult<CreatePaymentResponse>(createPaymentResponse);
 	}
 
 	private void checkBalanceEnough(double balance, double totalPrice) {
